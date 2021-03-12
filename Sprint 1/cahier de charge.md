@@ -1,20 +1,19 @@
 # freelance-platform
 
 # Introduction
-Freelance Platform help companies find and hire independent professionals for temporary job roles or special projects. These platforms offer a marketplace for businesses to browse profiles of freelancer candidates based on skills, experience, location, or other criteria. Alternatively, companies can also post a project description and solicit proposals from freelancers. These capabilities help companies of all sizes outsource work on projects that require specialized skills or additional manpower, freeing up full-time employees to focus on other business activities. Some platforms focus on sourcing freelancers with certain skills, such as writing, design, or programming, while others provide marketplaces for professionals with a wide variety of skills.
-
+Freelance Platform aide les entreprises à trouver et à embaucher des professionnels indépendants pour des postes temporaires ou des projets spéciaux. Ces plateformes offrent aux entreprises une place de marché pour parcourir les profils de candidats indépendants en fonction de leurs compétences, de leur expérience, de leur emplacement ou d'autres critères. Les entreprises peuvent également publier une description de projet et solliciter des propositions de pigistes. Ces capacités aident les entreprises de toutes tailles à externaliser le travail sur des projets qui nécessitent des compétences spécialisées ou une main-d'œuvre supplémentaire, libérant ainsi les employés à plein temps pour se concentrer sur d'autres activités commerciales. Certaines plates-formes se concentrent sur le sourcing de pigistes possédant certaines compétences, telles que la rédaction, la conception ou la programmation, tandis que d'autres fournissent des marchés pour des professionnels possédant une grande variété de compétences.
 
 # Functional Requirements
-The Hound Platform is designed to be a sole platform that helps companies seek professional to expert skills for their projects or team collaboration, and at the same time provide freelancers with a place to which they can acquire work easily, and get paid from the Hound Platform. The proposed Hound platform must be able to implement the following functions:
+La plate-forme Hound est conçue pour être une plate-forme unique qui aide les entreprises à rechercher des compétences professionnelles à expertes pour leurs projets ou leur collaboration d'équipe, et en même temps fournir aux pigistes un endroit où ils peuvent facilement acquérir du travail et être payés par la plate-forme Hound. . La plate-forme Hound proposée doit être en mesure de mettre en œuvre les fonctions suivantes:
 
-Management of the platform users, the login-process, password changing, third-party sign-up and sign-in authentication, Facilitated the Hound Payment process for work done, Gathering key user metrics.
-Data Management: Managing of job/projects uploads and project acquisition which includes; Project types/categories, Project Budget, Payment Options, Transactions details and authorization.
-Outputting Reports: A catalogue report, Job Listing report.
-Innovation: Happens in how specific projects are categorized to be in various access portals under the same Hound Platform.
-Non-Functional Requirements
-The application manages a huge volume of database, so the database must be suitable for fast growing data. Due to the nature of the program, there will be plenty of reports to be generated; therefore, the graphical user interface is a key element that should be paid attention to, it should be user- friendly and easy-to-use especially on the necessary features which the interface must have. In addition, the reports in this program must display enough columns and information that the user needs for making the statistics of the status of asset etc. Finally, only the people who have responsibility of managing the assets have the privilege to access the system.
+1 .Gestion des utilisateurs de la plate-forme, du processus de connexion, du changement de mot de passe, de l'inscription et de l'authentification par des tiers, a facilité le processus de paiement Hound pour le travail effectué, collecte des métriques clés des utilisateurs.
+
+2 .Gestion des données: Gestion des téléchargements de travaux / projets et acquisition de projets qui comprend; Types / catégories de projet, budget du projet, options de paiement, détails des transactions et autorisation.
+
+3 .Outputting Reports: Un rapport de catalogue, un rapport d'offres d'emploi.
+Innovation: se produit dans la façon dont des projets spécifiques sont classés dans divers portails d'accès sous la même plate-forme Hound.
 
 # User stories
-As an organization (client), one can also build their profile, set their general hiring rate for the projects. They also list what jobs they are offering, and set all necessary information that the job (project) requires. An organization can at any time receive proposals from interested parties(freelancers) showcasing their interest.
+En tant qu'organisation (client), on peut aussi construire son profil, fixer son taux d'embauche général pour les projets. Ils répertorient également les emplois qu'ils proposent et définissent toutes les informations nécessaires dont le travail (projet) a besoin. Une organisation peut à tout moment recevoir des propositions de parties intéressées (pigistes) démontrant leur intérêt.
 
-And it is up to the organization to choose the right freelancer based on their, past experiences, or the quality of their profile.
+
