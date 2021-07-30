@@ -8,13 +8,9 @@
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
+                    <h2>welcome to my platform </h2>
+                    <a href="freelancer/login"><button class="btn btn-danger">freelancer</button></a>
+                    <a href="client/login"><button class="btn btn-light">client</button></a>
                 </div>
             </div>
         </div>

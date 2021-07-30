@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FreelancerController;
+use App\Http\Controllers\ClientController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,21 +15,36 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('signup');
-// });
-// Route::get('login/', function () {
-//     return view('login');
-// });
-// Route::get('forget/', function () {
-//     return view('forget');
-// });
-// Route::get('home/', function () {
-//     return view('landing');
-// });
-// Route::get('dashboard', [App\Http\Controllers\FreelancerController::class, 'dashboard']); 
-Route::get('login', [App\Http\Controllers\FreelancerController::class, 'index'])->name('login');
-Route::post('custom-login', [App\Http\Controllers\FreelancerController::class, 'customLogin'])->name('login.custom'); 
-Route::get('registration', [App\Http\Controllers\Auth\RegisterController::class, 'registration'])->name('register');
-Route::post('custom-registration', [App\Http\Controllers\FreelancerController::class, 'customRegistration'])->name('register.custom'); 
-Route::get('signout', [App\Http\Controllers\FreelancerController::class, 'signOut'])->name('signout');
+Route::get('/', function () {
+    return view('home');
+});
+
+Route::post('/freelancer/save',[FreelancerController::class, 'save'])->name('freelancer.save');
+Route::post('/freelancer/check',[FreelancerController::class, 'check'])->name('freelancer.check');
+Route::get('/freelancer/logout',[FreelancerController::class, 'logout'])->name('freelancer.logout');
+
+Route::post('/client/save',[ClientController::class, 'save'])->name('client.save');
+Route::post('/client/check',[ClientController::class, 'check'])->name('client.check');
+Route::get('/client/logout',[ClientController::class, 'logout'])->name('client.logout');
+
+
+
+Route::group(['middleware'=>['AuthCheck']], function(){
+    // freelancer------------------
+    Route::get('/freelancer/login',[FreelancerController::class, 'login'])->name('freelancer.login');
+    Route::get('/freelancer/register',[FreelancerController::class, 'register'])->name('freelancer.register');
+
+    Route::get('/freelancer/dashboard',[FreelancerController::class, 'dashboard']);
+    Route::get('/freelancer/settings',[FreelancerController::class,'settings']);
+    Route::get('/freelancer/profile',[FreelancerController::class,'profile']);
+    Route::get('/freelancer/staff',[FreelancerController::class,'staff']);
+// client--------------
+    Route::get('/client/login',[ClientController::class, 'login'])->name('client.login');
+    Route::get('/client/register',[ClientController::class, 'register'])->name('client.register');
+
+    Route::get('/client/dashboard',[ClientController::class, 'dashboard']);
+    Route::get('/client/settings',[ClientController::class,'settings']);
+    Route::get('/client/profile',[ClientController::class,'profile']);
+    Route::get('/client/staff',[ClientController::class,'staff']);
+
+});

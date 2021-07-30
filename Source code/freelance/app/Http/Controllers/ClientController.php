@@ -1,85 +1,89 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Hash;
+use Session;
+use Illuminate\Support\Facades\Auth;
 use App\Models\client;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+    function login(){
+        return view('client.auth.login');
+    }
+    function register(){
+        return view('client.auth.register');
+    }
+    function save(Request $request){
+        
+        //Validate requests
+        $request->validate([
+            'name'=>'required',
+            'email'=>'required|email|unique:clients',
+            'password'=>'required|min:5|max:12'
+        ]);
+
+         //Insert data into database
+         $client = new client;
+         $client->name = $request->name;
+         $client->email = $request->email;
+         $client->password = Hash::make($request->password);
+         $save = $client->save();
+
+         if($save){
+            return back()->with('success','New User has been successfuly added to database');
+         }else{
+             return back()->with('fail','Something went wrong, try again later');
+         }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    function check(Request $request){
+        //Validate requests
+        $request->validate([
+             'email'=>'required|email',
+             'password'=>'required|min:5|max:12'
+        ]);
+
+        $userInfo = client::where('email','=', $request->email)->first();
+
+        if(!$userInfo){
+            return back()->with('fail','We do not recognize your email address');
+        }else{
+            //check password
+            if(Hash::check($request->password, $userInfo->password)){
+                $request->session()->put('LoggedUser', $userInfo->id);
+                return redirect('client/dashboard');
+
+            }else{
+                return back()->with('fail','Incorrect password');
+            }
+        }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    function logout(){
+        if(session()->has('LoggedUser')){
+            session()->pull('LoggedUser');
+            return redirect('/client/login');
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\client  $client
-     * @return \Illuminate\Http\Response
-     */
-    public function show(client $client)
-    {
-        //
+    function dashboard(){
+        $data = ['LoggedUserInfo'=>client::where('id','=', session('LoggedUser'))->first()];
+        return view('client.dashboard', $data);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\client  $client
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(client $client)
-    {
-        //
+    function settings(){
+        $data = ['LoggedUserInfo'=>client::where('id','=', session('LoggedUser'))->first()];
+        return view('client.settings', $data);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\client  $client
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, client $client)
-    {
-        //
+    function profile(){
+        $data = ['LoggedUserInfo'=>client::where('id','=', session('LoggedUser'))->first()];
+        return view('client.profile', $data);
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\client  $client
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(client $client)
-    {
-        //
+    function staff(){
+        $data = ['LoggedUserInfo'=>client::where('id','=', session('LoggedUser'))->first()];
+        return view('client.staff', $data);
     }
 }
