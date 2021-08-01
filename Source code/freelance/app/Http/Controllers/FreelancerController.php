@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Hash;
 use Session;
 use Illuminate\Support\Facades\Auth;
+use App\Models\project;
 use App\Models\freelancer;
 use Illuminate\Http\Request;
 
@@ -32,7 +33,11 @@ class FreelancerController extends Controller
          $save = $freelancer->save();
 
          if($save){
-            return back()->with('success','New User has been successfuly added to database');
+
+            $request->session()->put('LoggedUser',  $freelancer->id);
+            return redirect('freelancer/dashboard')->with('success','New User has been successfuly added to database');
+
+            // return back()->with('success','New User has been successfuly added to database');
          }else{
              return back()->with('fail','Something went wrong, try again later');
          }
@@ -64,12 +69,14 @@ class FreelancerController extends Controller
     function logout(){
         if(session()->has('LoggedUser')){
             session()->pull('LoggedUser');
-            return redirect('/freelancer/login');
+            return redirect('/');
         }
     }
 
     function dashboard(){
-        $data = ['LoggedUserInfo'=>freelancer::where('id','=', session('LoggedUser'))->first()];
+
+        $data = ['LoggedUserInfo'=>freelancer::where('id','=', session('LoggedUser'))->first()
+    ,'projectArr'=>project::all()];
         return view('freelancer.dashboard', $data);
     }
 
@@ -86,4 +93,5 @@ class FreelancerController extends Controller
         $data = ['LoggedUserInfo'=>freelancer::where('id','=', session('LoggedUser'))->first()];
         return view('freelancer.staff', $data);
     }
+    
 }

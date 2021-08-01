@@ -19,6 +19,7 @@ Route::get('/', function () {
     return view('home');
 });
 
+
 Route::post('/freelancer/save',[FreelancerController::class, 'save'])->name('freelancer.save');
 Route::post('/freelancer/check',[FreelancerController::class, 'check'])->name('freelancer.check');
 Route::get('/freelancer/logout',[FreelancerController::class, 'logout'])->name('freelancer.logout');

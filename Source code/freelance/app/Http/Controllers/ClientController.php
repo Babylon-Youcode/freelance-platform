@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Hash;
 use Session;
 use Illuminate\Support\Facades\Auth;
+use App\Models\project;
 use App\Models\client;
 use Illuminate\Http\Request;
 
@@ -32,7 +33,8 @@ class ClientController extends Controller
          $save = $client->save();
 
          if($save){
-            return back()->with('success','New User has been successfuly added to database');
+            $request->session()->put('LoggedUser',  $client->id);
+            return redirect('client/dashboard');
          }else{
              return back()->with('fail','Something went wrong, try again later');
          }
@@ -64,12 +66,12 @@ class ClientController extends Controller
     function logout(){
         if(session()->has('LoggedUser')){
             session()->pull('LoggedUser');
-            return redirect('/client/login');
+            return redirect('/');
         }
     }
 
     function dashboard(){
-        $data = ['LoggedUserInfo'=>client::where('id','=', session('LoggedUser'))->first()];
+        $data = ['LoggedUserInfo'=>client::where('id','=', session('LoggedUser'))->first(),'projectArr'=>project::all()];
         return view('client.dashboard', $data);
     }
 
