@@ -16,11 +16,10 @@ class CreateFreelancersTable extends Migration
         Schema::create('freelancers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('email');
             $table->string('password');
-            $table->string('experience')->default('--');
-            $table->string('image')->default('--');
+            $table->string('experience')->default('');
+            $table->string('image')->default('img/user.png');
             $table->rememberToken();
             $table->timestamps();
         });

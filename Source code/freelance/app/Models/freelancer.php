@@ -12,6 +12,7 @@ class freelancer extends Model
                 'name',
                 'email',
                 'password',
+                'experience',
             ];
 }
 

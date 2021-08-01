@@ -34,11 +34,11 @@
                     <div class="row align-items-center justify-content-between flex-column flex-sm-row">
                         <div class="col-auto"><div class="small m-0 text-white">Copyright &copy; Freelancing 2021</div></div>
                         <div class="col-auto">
-                            <a class="link-light small" href="https://www.facebook.com/profile.php?id=100010384025308"><i class="fab fa-facebook"></i> Facebook</a>
+                            <a class="link-light small" target="_blank" href="https://www.facebook.com/profile.php?id=100010384025308"><i class="fab fa-facebook"></i> Facebook</a>
                             <span class="text-white mx-1">&middot;</span>
                             <a class="link-light small" href="#"><i class="fab fa-google"></i> Google</a>
                             <span class="text-white mx-1">&middot;</span>
-                            <a class="link-light small" href="https://www.linkedin.com/in/hamza-elglaoui-b56b691a1/"><i class="fab fa-linkedin"></i> Linkedin</a>
+                            <a class="link-light small" target="_blank" href="https://www.linkedin.com/in/hamza-elglaoui-b56b691a1/"><i class="fab fa-linkedin"></i> Linkedin</a>
                         </div>
                     </div>
                 </div>

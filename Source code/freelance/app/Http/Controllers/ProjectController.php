@@ -7,13 +7,7 @@ use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
-    public function __construct()
-    {
-        
-        return view('/freelancer/dashboard')->with('projectArr',project::all());
-    }
-
-
+  
     public function delete($id){
         project::destroy(array('id',$id));
         return redirect('/');

@@ -39,6 +39,7 @@ Route::group(['middleware'=>['AuthCheck']], function(){
     Route::get('/freelancer/settings',[FreelancerController::class,'settings']);
     Route::get('/freelancer/profile',[FreelancerController::class,'profile']);
     Route::get('/freelancer/staff',[FreelancerController::class,'staff']);
+    Route::post('/freelancer/update/{id}',[FreelancerController::class, 'update']);
 // client--------------
     Route::get('/client/login',[ClientController::class, 'login'])->name('client.login');
     Route::get('/client/register',[ClientController::class, 'register'])->name('client.register');
@@ -47,5 +48,6 @@ Route::group(['middleware'=>['AuthCheck']], function(){
     Route::get('/client/settings',[ClientController::class,'settings']);
     Route::get('/client/profile',[ClientController::class,'profile']);
     Route::get('/client/staff',[ClientController::class,'staff']);
+    Route::post('/client/update/{id}',[ClientController::class, 'update']);
 
 });

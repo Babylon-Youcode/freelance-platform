@@ -42,6 +42,24 @@ class FreelancerController extends Controller
              return back()->with('fail','Something went wrong, try again later');
          }
     }
+    public function update(Request  $request, $id){
+        $request->validate([
+            'name'=>'required',
+            'email'=>'required|email',
+            'experience'=>'required'
+        ]);
+        $freelancer = freelancer::find($id);
+        $freelancer->name = $request->input('name');
+        $freelancer->email = $request->input('email');
+        $freelancer->experience = $request->input('experience');
+        $save= $freelancer->save();
+        if ($save) {
+            return redirect('/freelancer/profile')->with('success','You have successfuly update your profile');
+        }elseif(!$save){
+            return back()->with('danger','Something went wrong');
+        }
+      
+   }
 
     function check(Request $request){
         //Validate requests

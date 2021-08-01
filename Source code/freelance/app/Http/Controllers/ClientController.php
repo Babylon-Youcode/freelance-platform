@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Hash;
-use Session;
-use Illuminate\Support\Facades\Auth;
+// use Session;
+// use Illuminate\Support\Facades\Auth;
 use App\Models\project;
 use App\Models\client;
 use Illuminate\Http\Request;
@@ -69,7 +69,17 @@ class ClientController extends Controller
             return redirect('/');
         }
     }
-
+    public function update(Request  $request, $id){
+        $client = client::find($id);
+        $client->name = $request->input('name');
+        $client->email = $request->input('email');
+        $client->type = $request->input('type');
+        $client->category = $request->input('category');
+        $save=  $client->save();
+        if ($save) {
+        return redirect('/client/profile')->with('success','You have successfuly update your profile');
+        }
+   }
     function dashboard(){
         $data = ['LoggedUserInfo'=>client::where('id','=', session('LoggedUser'))->first(),'projectArr'=>project::all()];
         return view('client.dashboard', $data);
