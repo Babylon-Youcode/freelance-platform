@@ -49,5 +49,9 @@ Route::group(['middleware'=>['AuthCheck']], function(){
     Route::get('/client/profile',[ClientController::class,'profile']);
     Route::get('/client/staff',[ClientController::class,'staff']);
     Route::post('/client/update/{id}',[ClientController::class, 'update']);
+    Route::post('/client/addProject',[ClientController::class, 'addProject']);
+    Route::get('/client/deleteProject/{id}',[ClientController::class, 'deleteProject']);
+    // Route::post('/client/findProject/{id}',[ClientController::class, 'findProject']);
+    Route::post('/client/editProject/{id}',[ClientController::class, 'editProject']);
 
 });

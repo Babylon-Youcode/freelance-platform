@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Hash;
-// use Session;
+use Session;
 // use Illuminate\Support\Facades\Auth;
 use App\Models\project;
 use App\Models\client;
@@ -39,6 +39,12 @@ class ClientController extends Controller
              return back()->with('fail','Something went wrong, try again later');
          }
     }
+
+
+
+    
+
+
 
     function check(Request $request){
         //Validate requests
@@ -95,7 +101,54 @@ class ClientController extends Controller
         return view('client.profile', $data);
     }
     function staff(){
-        $data = ['LoggedUserInfo'=>client::where('id','=', session('LoggedUser'))->first()];
+        $data = ['LoggedUserInfo'=>client::where('id','=', session('LoggedUser'))->first() ,'myProjects'=>project::where('client_id','=', session('LoggedUser'))->get() ];
         return view('client.staff', $data);
     }
+
+
+function addProject(Request $request){
+        
+    //Validate requests
+    $request->validate([
+        'name'=>'required',
+        'description'=>'required',
+       
+    ]);
+
+     //Insert data into database
+     $project = new project;
+     $project->name = $request->name;
+     $project->description = $request->description;
+     $project->client_id =session()->get('LoggedUser');
+     $save = $project->save();
+
+     if($save){
+        return redirect('client/staff');
+     }else{
+         return back()->with('fail','Something went wrong, try again later');
+     }
+}
+
+function deleteProject($id){
+    project::destroy(array('id',$id));
+    return redirect('client/staff');
+}
+
+// function findProject($id)
+// {
+//     return view('client/staff')->with('findProject', project::find($id));
+// }
+ function editProject(Request  $request, $id){
+
+    $request->validate([
+        'name'=>'required',
+        'description'=>'required',
+       
+    ]);
+    $project = project::find($id);
+    $project->name = $request->name;
+    $project->description = $request->description;
+    $project->save();
+    return redirect('client/staff');
+}
 }
