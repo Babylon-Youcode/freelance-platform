@@ -20,7 +20,7 @@ class CreateClientsTable extends Migration
             $table->string('password');
             $table->string('type')->nullable();
             $table->string('category')->nullable();
-            $table->string('image')->default('img/building.jpg');
+            $table->string('image')->default('building.jpg');
             $table->rememberToken();
             $table->timestamps();
         });

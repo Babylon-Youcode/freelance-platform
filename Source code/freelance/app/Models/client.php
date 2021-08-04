@@ -10,12 +10,16 @@ use Illuminate\Notifications\Notifiable;
 class client extends Authenticatable
 {
     use HasFactory, Notifiable;
+
     protected $guard = 'clients';
   
     protected $fillable = [
         'name',
         'email',
+        'image',
         'password',
+        'type',
+        'category',
     ];
 
     

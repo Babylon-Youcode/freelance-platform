@@ -14,7 +14,7 @@
      @endif
      <div class="row">
         <div class="col-6">
-     <img class="rounded-circle w-25 ml-5 " src="../{{$LoggedUserInfo->image}}" alt="hello">
+     <img class="rounded-circle w-25 ml-5 " src="/img/{{$LoggedUserInfo->image}}" alt="hello">
        <h2>{{$LoggedUserInfo->name}}</h2>
        <h3>{{$LoggedUserInfo->email }}</h3>
        <h3>{{$LoggedUserInfo->experience}}</h3>
@@ -34,12 +34,16 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                  <form action="/freelancer/update/{{$LoggedUserInfo->id }}" method="post">
+                  <form  enctype="multipart/form-data" action="/freelancer/update/{{$LoggedUserInfo->id }}" method="post">
                      @csrf
                      <div class="form-group">
                            <label>Name</label>
                            <input type="text" class="form-control" name="name" placeholder="Enter full name" value="{{$LoggedUserInfo->name}}">
                            <span class="text-danger">@error('name'){{ $message }} @enderror</span>
+                        </div>
+                        <div class="form-group">
+                           <label class="form-label">Image</label>
+                           <input type="file" class="form-control" name="image"  >     
                         </div>
                         <div class="form-group">
                            <label>Email</label>

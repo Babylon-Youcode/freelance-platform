@@ -76,10 +76,19 @@ class ClientController extends Controller
         }
     }
     public function update(Request  $request, $id){
+        
+       
+
         $client = client::find($id);
         $client->name = $request->input('name');
         $client->email = $request->input('email');
         $client->type = $request->input('type');
+        if($request->image){
+            
+            $imageName = date('mdYHis').uniqid().'.'.$request->image->extension();
+            $request->image->move(public_path('img/'), $imageName);
+            $client->image = $imageName;
+        }
         $client->category = $request->input('category');
         $save=  $client->save();
         if ($save) {
@@ -91,39 +100,45 @@ class ClientController extends Controller
         return view('client.dashboard', $data);
     }
 
-    function settings(){
-        $data = ['LoggedUserInfo'=>client::where('id','=', session('LoggedUser'))->first()];
-        return view('client.settings', $data);
+    function category(){
+        $data = ['LoggedUserInfo'=>client::where('id','=', session('LoggedUser'))->first(),'projectArr'=>project::all()];
+        return view('client.category', $data);
     }
 
     function profile(){
         $data = ['LoggedUserInfo'=>client::where('id','=', session('LoggedUser'))->first()];
         return view('client.profile', $data);
     }
-    function staff(){
+    function project(){
         $data = ['LoggedUserInfo'=>client::where('id','=', session('LoggedUser'))->first() ,'myProjects'=>project::where('client_id','=', session('LoggedUser'))->get() ];
-        return view('client.staff', $data);
+        return view('client.project', $data);
     }
 
-
-function addProject(Request $request){
+  
+function addProject(Request $request ){
         
     //Validate requests
     $request->validate([
         'name'=>'required',
         'description'=>'required',
-       
+        'category'=>'required',
     ]);
 
      //Insert data into database
      $project = new project;
      $project->name = $request->name;
      $project->description = $request->description;
+     $project->category = $request->category;
+     if($request->image){
+        $imageName = date('mdYHis').uniqid().'.'.$request->image->extension();
+        $request->image->move(public_path('img/'), $imageName);
+        $project->image = $imageName;
+    }
      $project->client_id =session()->get('LoggedUser');
      $save = $project->save();
 
      if($save){
-        return redirect('client/staff');
+        return redirect('client/project');
      }else{
          return back()->with('fail','Something went wrong, try again later');
      }
@@ -131,24 +146,32 @@ function addProject(Request $request){
 
 function deleteProject($id){
     project::destroy(array('id',$id));
-    return redirect('client/staff');
+    return redirect('client/project');
 }
 
-// function findProject($id)
-// {
-//     return view('client/staff')->with('findProject', project::find($id));
-// }
+function findProject($id)
+{
+    $data = ['LoggedUserInfo'=>client::where('id','=', session('LoggedUser'))->first() ,'findProject'=>project::find($id) ];
+    return view('client/projectD', $data);
+}
  function editProject(Request  $request, $id){
 
     $request->validate([
         'name'=>'required',
         'description'=>'required',
+        'category'=>'required',
        
     ]);
     $project = project::find($id);
     $project->name = $request->name;
     $project->description = $request->description;
+    if($request->image){
+        $imageName = date('mdYHis').uniqid().'.'.$request->image->extension();
+        $request->image->move(public_path('img/'), $imageName);
+        $project->image = $imageName;
+    }
+    $project->category = $request->category;
     $project->save();
-    return redirect('client/staff');
+    return redirect('client/project');
 }
 }

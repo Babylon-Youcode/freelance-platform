@@ -9,7 +9,7 @@
   </nav>
 
 <header class="py-5">
-    <div class="container px-5">
+    <div class="container-fluid px-5">
         <div class="row gx-5 align-items-center justify-content-center">
             <div class="col-lg-8 col-xl-7 col-xxl-6">
                 <div class="my-5 text-center text-xl-start">
@@ -29,9 +29,9 @@
 </header>
 <hr>
         <!-- Features section-->
-        <section class=" border-bottom" id="features">
+        <section class="border-bottom" id="features">
             <h1 class="text-center fw-bold text-success">Guides</h1>
-            <div class="container px-5 my-5">
+            <div class="container-fluid px-5 my-5">
               
                 <div class="row gx-5">
                     <div class="col-lg-4 mb-5 mb-lg-0">
@@ -68,7 +68,7 @@
        
         <!-- Testimonials section-->
         <section class=" border-bottom">
-            <div class="container px-5 my-5 px-5">
+            <div class="container-fluid px-5 my-5 px-5">
                 <div class="text-center mb-3">
                     <h2 class="fw-bolder text-success">We've got what you need!</h2>
                     <p class="lead mb-0 text-muted">Our customers love working with us</p>
@@ -104,7 +104,7 @@
      
         <!-- Contact section-->
         <section class="bg-light mb-4 mt-4">
-            <div class="container ">
+            <div class="container-fluid ">
                 <div class="row gx-5">
                     <div class="col-7 p-4">
                 <div class="text-center mb-2">

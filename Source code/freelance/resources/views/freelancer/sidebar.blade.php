@@ -4,7 +4,7 @@
 <div>
   {{ $LoggedUserInfo['name'] }}
   <a href="/freelancer/profile">
-  <img class="rounded-circle ml-3 " style="width: 30px;" src="../{{$LoggedUserInfo->image}}" alt="hello"></a>
+  <img class="rounded-circle ml-3 " style="width: 30px;" src="/img/{{$LoggedUserInfo->image}}" alt="hello"></a>
   </div>
 </div>
 

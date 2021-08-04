@@ -10,7 +10,7 @@
       {{ Session::get('success') }}
    </div>
  @endif
- <img class="rounded-circle w-25 m-auto" src="../{{$LoggedUserInfo->image}}" alt="hello">
+ <img class="rounded-circle w-25 m-auto" src="/img/{{$LoggedUserInfo->image}}" alt="hello">
    <h2>{{$LoggedUserInfo->name}}</h2>
    <h3>{{$LoggedUserInfo->email }}</h3>
    <h3>{{$LoggedUserInfo->type}}</h3>
@@ -33,7 +33,7 @@
               </button>
             </div>
             <div class="modal-body">
-              <form action="/client/update/{{$LoggedUserInfo->id }}" method="post">
+              <form enctype="multipart/form-data" action="/client/update/{{$LoggedUserInfo->id }}" method="post">
                  @csrf
                  <div class="form-group">
                        <label>Name</label>
@@ -50,6 +50,10 @@
                     <div class="form-group">
                      <label>Category</label>
                      <input type="text" class="form-control" name="category" value="{{$LoggedUserInfo->category}}" >     
+                  </div>
+                  <div class="form-group">
+                     <label>Image</label>
+                     <input type="file" class="form-control" name="image" value="{{$LoggedUserInfo->image}}" >     
                   </div>
                     <button type="submit" class="btn btn-block btn-success">Update</button>
                  </form>   

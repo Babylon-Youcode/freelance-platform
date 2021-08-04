@@ -19,7 +19,7 @@ class CreateFreelancersTable extends Migration
             $table->string('email');
             $table->string('password');
             $table->string('experience')->default('');
-            $table->string('image')->default('img/user.png');
+            $table->string('image')->default('user.png');
             $table->rememberToken();
             $table->timestamps();
         });

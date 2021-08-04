@@ -51,6 +51,11 @@ class FreelancerController extends Controller
         $freelancer = freelancer::find($id);
         $freelancer->name = $request->input('name');
         $freelancer->email = $request->input('email');
+        if($request->image){
+            $imageName = date('mdYHis').uniqid().'.'.$request->image->extension();
+            $request->image->move(public_path('img/'), $imageName);
+            $freelancer->image = $imageName;
+        }
         $freelancer->experience = $request->input('experience');
         $save= $freelancer->save();
         if ($save) {

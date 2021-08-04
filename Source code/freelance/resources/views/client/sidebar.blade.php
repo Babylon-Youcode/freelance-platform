@@ -3,7 +3,7 @@
 @section('content')
 <div>
 {{ $LoggedUserInfo['name'] }}
-<img class="rounded-circle ml-3 " style="width: 30px;" src="../{{$LoggedUserInfo->image}}" alt="hello">
+<img class="rounded-circle ml-3 " style="width: 30px;" src="/img//{{$LoggedUserInfo->image}}" alt="hello">
 </div>
 </div>
 </div>
@@ -30,17 +30,18 @@
            </li>
           
            <li class="nav-item">
-             <a class="nav-link" href="/client/staff">
+             <a class="nav-link" href="/client/project">
                <i class="fas fa-briefcase"></i>
                Projects
              </a>
            </li>
            <li class="nav-item">
-            <a class="nav-link" href="/client/settings">
+            <a class="nav-link" href="/client/category">
               <i class="fas fa-cogs"></i>
-              Settings
+              Category
             </a>
           </li>
+      
           <div style="height: 500px;"></div>
            <li class="nav-item">
              <a class="nav-link text-danger" href="{{ route('client.logout') }}">
