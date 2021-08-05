@@ -3,58 +3,40 @@
 @section('sidebar')
 
  
-     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-         <h1 class="h2">Dashboard</h1>
-         <div class="btn-toolbar mb-2 mb-md-0">
-           <div class="btn-group me-2">
-             <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-             <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
-           </div>
-           <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-             <span data-feather="calendar"></span>
-             This week
-           </button>
-         </div>
-       </div>
- 
-       
- 
-       <h2>Section title</h2>
-       <div class="table-responsive">
-         <table class="table table-striped table-sm">
-           <thead>
-             <tr>
-               <th scope="col">#</th>
-               <th scope="col">Header</th>
-               <th scope="col">Header</th>
-               <th scope="col">Header</th>
-               <th scope="col">Header</th>
-             </tr>
-           </thead>
-           <tbody>
-           
-            @foreach($projectArr as $todo)
-            <tr>
-                <td>{{$todo->id}}</td>
-                <td>{{$todo->name}}</td>
-                <td>{{$todo->description}}</td>
-                <td>{{$todo->client_id }}</td>
-                <td>{{$todo->created_at}}</td>
-                
-            </tr>
-
-                 
-            @endforeach
-             
-              </tbody>
-         </table>
-       </div>
-     </main>
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Dashboard</h1>   
+  </div>
+  <h3>Clients</h3>
+  <hr>
+  <div class="row w-100">
+    @foreach( $clientArr as $client)
+    <div class="card col-lg-2 col-sm-3  m-2"  >
+     <img src="/img/{!! $client->image !!}"style="height: 150px;" class="rounded-circle"  alt="...">
+     <div class="card-body">
+       <p class="card-title ">{!! $client->name !!}</p>
+       <p class="card-title ">{!! $client->email !!}</p>
+       <p class="card-text text-muted">{!! $client->type !!}</p>
+     </div>
    </div>
+   @endforeach
  </div>
- 
-   
-
+  <h3>Projects</h3>
+  <hr>
+  <div class="row w-100">
+    @foreach( $projectArr as $project)
+    <div class="card col-lg-2 col-sm-3  m-2"  >
+     <img src="/img/{!! $project->image !!}"style="height: 150px; "  alt="...">
+     <div class="card-body">
+       <p class="card-title ">{!! $project->name !!}</p>
+       <p class="card-text text-muted">{!! $project->description !!}</p>
+       <small >{!! $project->created_at !!}</small>
+     </div>
+   </div>
+   @endforeach
+ </div>
+ </main>
+</div>
+</div>
   
     @endsection

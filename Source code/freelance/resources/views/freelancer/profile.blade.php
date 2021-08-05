@@ -12,17 +12,15 @@
           {{ Session::get('success') }}
        </div>
      @endif
-     <div class="row">
-        <div class="col-6">
-     <img class="rounded-circle w-25 ml-5 " src="/img/{{$LoggedUserInfo->image}}" alt="hello">
-       <h2>{{$LoggedUserInfo->name}}</h2>
-       <h3>{{$LoggedUserInfo->email }}</h3>
-       <h3>{{$LoggedUserInfo->experience}}</h3>
-     
-    
-   </div>
-   </div>     
-
+   <div class="row">
+      <img class=" col-5  m-auto" src="/img/{{$LoggedUserInfo->image}}" alt="hello">
+      <div class="col m-4">
+         <h3>Name :<p class='m-4 text-muted'>{{$LoggedUserInfo->name}}</p></h3>
+         <h3>Email :  <p class='m-4 text-muted'>{{$LoggedUserInfo->email }}</p></h3>
+         <h3>Type :<p class='m-4 text-muted'>{{$LoggedUserInfo->experience}}</p></h3>
+        
+     </div>
+     </div>
       {{-- update profile y--------------------}}
          <div class="modal fade" id="update-modal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">

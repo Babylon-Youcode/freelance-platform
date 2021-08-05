@@ -5,7 +5,7 @@
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
     <div class="m-2">
         <div class="row">
-        <img src="/img/{!! $findProject->image !!}" class="col-6" alt="...">
+        <img src="/img/{!! $findProject->image !!}" style="height: 460px" class="col-6" alt="...">
   
           <form class="col" enctype="multipart/form-data" action="/client/editProject/{!! $findProject->id !!}" method="post">
                      

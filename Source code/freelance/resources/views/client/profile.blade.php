@@ -10,13 +10,16 @@
       {{ Session::get('success') }}
    </div>
  @endif
- <img class="rounded-circle w-25 m-auto" src="/img/{{$LoggedUserInfo->image}}" alt="hello">
-   <h2>{{$LoggedUserInfo->name}}</h2>
-   <h3>{{$LoggedUserInfo->email }}</h3>
-   <h3>{{$LoggedUserInfo->type}}</h3>
-   <h3>{{$LoggedUserInfo->category}}</h3>
+ <div class="row">
+ <img class=" col-5  m-auto" src="/img/{{$LoggedUserInfo->image}}" alt="hello">
+ <div class="col m-4">
+    <h3>Name :<p class='m-4 text-muted'>{{$LoggedUserInfo->name}}</p></h3>
+    <h3>Email :  <p class='m-4 text-muted'>{{$LoggedUserInfo->email }}</p></h3>
+    <h3>Type :<p class='m-4 text-muted'>{{$LoggedUserInfo->type}}</p></h3>
+    <h3>Category :<p class='m-4 text-muted' >{{$LoggedUserInfo->category}}</p></h3> 
+</div>
+</div>
 
-  
   
   
 

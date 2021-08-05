@@ -6,6 +6,7 @@ use Session;
 // use Illuminate\Support\Facades\Auth;
 use App\Models\project;
 use App\Models\client;
+use App\Models\freelancer;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
@@ -96,7 +97,7 @@ class ClientController extends Controller
         }
    }
     function dashboard(){
-        $data = ['LoggedUserInfo'=>client::where('id','=', session('LoggedUser'))->first(),'projectArr'=>project::all()];
+        $data = ['LoggedUserInfo'=>client::where('id','=', session('LoggedUser'))->first(),'projectArr'=>project::all(),'freelancerArr'=>freelancer::all()];
         return view('client.dashboard', $data);
     }
 

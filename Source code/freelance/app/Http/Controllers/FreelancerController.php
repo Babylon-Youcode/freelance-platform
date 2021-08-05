@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Hash;
 use Session;
 use Illuminate\Support\Facades\Auth;
 use App\Models\project;
+use App\Models\client;
 use App\Models\freelancer;
 use Illuminate\Http\Request;
 
@@ -99,13 +100,13 @@ class FreelancerController extends Controller
     function dashboard(){
 
         $data = ['LoggedUserInfo'=>freelancer::where('id','=', session('LoggedUser'))->first()
-    ,'projectArr'=>project::all()];
+    ,'projectArr'=>project::all(),'freelancerArr'=>freelancer::all(),'clientArr'=>client::all()];
         return view('freelancer.dashboard', $data);
     }
 
     function settings(){
-        $data = ['LoggedUserInfo'=>freelancer::where('id','=', session('LoggedUser'))->first()];
-        return view('freelancer.settings', $data);
+        $data = ['LoggedUserInfo'=>freelancer::where('id','=', session('LoggedUser'))->first() ,'projectArr'=>project::all()];
+        return view('freelancer.category', $data);
     }
 
     function profile(){

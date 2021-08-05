@@ -10,8 +10,8 @@
        </div>
        <div class="row">
        @foreach( $myProjects as $project)
-       <div class="card col-3 m-2" >
-        <img src="/img/{!! $project->image !!}" class="card-img-top w-100" alt="...">
+       <div class="card col-3 m-2" style="height: 350px;">
+        <img src="/img/{!! $project->image !!}" class="card-img-top" style="height: 200px; " alt="...">
         <div class="card-body">
           <h5 class="card-title">{!! $project->name !!}</h5>
           <p class="card-text">{!! $project->description !!}</p>

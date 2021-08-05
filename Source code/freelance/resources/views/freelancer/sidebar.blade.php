@@ -39,8 +39,8 @@
            </li>
            <li class="nav-item">
             <a class="nav-link" href="/freelancer/settings">
-              <i class="fas fa-cogs"></i>
-              Settings
+              <i class="fas fa-layer-group"></i>
+              Categorys
             </a>
           </li>
           <div style="height: 500px;"></div>

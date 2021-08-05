@@ -37,7 +37,7 @@
            </li>
            <li class="nav-item">
             <a class="nav-link" href="/client/category">
-              <i class="fas fa-cogs"></i>
+              <i class="fas fa-layer-group"></i>
               Category
             </a>
           </li>
