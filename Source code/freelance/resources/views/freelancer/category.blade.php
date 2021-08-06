@@ -16,8 +16,8 @@
          @if($project->category =='Websites, IT & Software')
          <div class="card col-lg-2 col-sm-3  m-2" >
           <img src="/img/{!! $project->image !!}" class="card-img-top "style="height: 100px;" alt="...">
-          <div class="card-body">
-            <p class="card-title">{!! $project->name !!}</p>
+          <div class="my-2">
+            <p class="card-title">{!! $project->name !!}<strong class="float-right">{!! $project->prix !!}/Dh</strong></p>
             <p class="card-text text-muted">{!! $project->description !!}</p>
             <small >{!! $project->created_at !!}</small>
           </div>
@@ -33,8 +33,8 @@
         @if($project->category == 'Design, Media & Architecture')
         <div class="card col-lg-2 col-sm-3  m-2" >
          <img src="/img/{!! $project->image !!}" class="card-img-top "style="height: 100px;" alt="...">
-         <div class="card-body">
-           <p class="card-title">{!! $project->name !!}</p>
+         <div class="my-2">
+           <p class="card-title">{!! $project->name !!}<strong class="float-right">{!! $project->prix !!}/Dh</strong></p>
            <p class="card-text text-muted">{!! $project->description !!}</p>
            <small >{!! $project->created_at !!}</small>
          </div>
@@ -50,8 +50,8 @@
        @if($project->category == 'Data Entry & Admin')
        <div class="card col-lg-2 col-sm-3  m-2" >
         <img src="/img/{!! $project->image !!}" class="card-img-top "style="height: 100px;" alt="...">
-        <div class="card-body">
-          <p class="card-title">{!! $project->name !!}</p>
+        <div class="my-2">
+          <p class="card-title">{!! $project->name !!}<strong class="float-right">{!! $project->prix !!}/Dh</strong></p>
           <p class="card-text text-muted">{!! $project->description !!}</p>
           <small >{!! $project->created_at !!}</small>
         </div>
@@ -67,8 +67,8 @@
       @if($project->category == 'Translation & Languages')
       <div class="card col-lg-2 col-sm-3  m-2" >
        <img src="/img/{!! $project->image !!}" class="card-img-top "style="height: 100px;" alt="...">
-       <div class="card-body">
-         <p class="card-title">{!! $project->name !!}</p>
+       <div class="my-2">
+         <p class="card-title">{!! $project->name !!}<strong class="float-right">{!! $project->prix !!}/Dh</strong></p>
          <p class="card-text text-muted">{!! $project->description !!}</p>
          <small >{!! $project->created_at !!}</small>
        </div>
@@ -84,8 +84,8 @@
      @if($project->category == 'Writing & Content')
      <div class="card col-lg-2 col-sm-3  m-2" >
       <img src="/img/{!! $project->image !!}" class="card-img-top "style="height: 100px;" alt="...">
-      <div class="card-body">
-        <p class="card-title">{!! $project->name !!}</p>
+      <div class="my-2">
+        <p class="card-title">{!! $project->name !!}<strong class="float-right">{!! $project->prix !!}/Dh</strong></p>
         <p class="card-text text-muted">{!! $project->description !!}</p>
         <small >{!! $project->created_at !!}</small>
       </div>
@@ -101,8 +101,8 @@
     @if($project->category == 'Other')
     <div class="card col-lg-2 col-sm-3  m-2" >
      <img src="/img/{!! $project->image !!}" class="card-img-top " style="height: 100px;" alt="...">
-     <div class="card-body">
-       <p class="card-title">{!! $project->name !!}</p>
+     <div class="my-2">
+       <p class="card-title">{!! $project->name !!}<strong class="float-right">{!! $project->prix !!}/Dh</strong></p>
        <p class="card-text">{!! $project->description !!}</p>
        <small >{!! $project->created_at !!}</small>
      </div>

@@ -7,6 +7,7 @@ use Session;
 use App\Models\project;
 use App\Models\client;
 use App\Models\freelancer;
+use App\Models\competance;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
@@ -97,12 +98,16 @@ class ClientController extends Controller
         }
    }
     function dashboard(){
-        $data = ['LoggedUserInfo'=>client::where('id','=', session('LoggedUser'))->first(),'projectArr'=>project::all(),'freelancerArr'=>freelancer::all()];
+        $data = ['LoggedUserInfo'=>client::where('id','=', session('LoggedUser'))->first(),
+        'projectArr'=>project::all(),
+        'freelancerArr'=>freelancer::all(),
+        'competanceArr'=>competance::all()];
         return view('client.dashboard', $data);
     }
 
     function category(){
-        $data = ['LoggedUserInfo'=>client::where('id','=', session('LoggedUser'))->first(),'projectArr'=>project::all()];
+        $data = ['LoggedUserInfo'=>client::where('id','=', session('LoggedUser'))->first(),
+        'projectArr'=>project::all()];
         return view('client.category', $data);
     }
 
@@ -111,7 +116,8 @@ class ClientController extends Controller
         return view('client.profile', $data);
     }
     function project(){
-        $data = ['LoggedUserInfo'=>client::where('id','=', session('LoggedUser'))->first() ,'myProjects'=>project::where('client_id','=', session('LoggedUser'))->get() ];
+        $data = ['LoggedUserInfo'=>client::where('id','=', session('LoggedUser'))->first() ,
+        'myProjects'=>project::where('client_id','=', session('LoggedUser'))->get() ];
         return view('client.project', $data);
     }
 
@@ -130,6 +136,7 @@ function addProject(Request $request ){
      $project->name = $request->name;
      $project->description = $request->description;
      $project->category = $request->category;
+     $project->prix = $request->prix;
      if($request->image){
         $imageName = date('mdYHis').uniqid().'.'.$request->image->extension();
         $request->image->move(public_path('img/'), $imageName);
@@ -166,6 +173,7 @@ function findProject($id)
     $project = project::find($id);
     $project->name = $request->name;
     $project->description = $request->description;
+    $project->prix = $request->prix;
     if($request->image){
         $imageName = date('mdYHis').uniqid().'.'.$request->image->extension();
         $request->image->move(public_path('img/'), $imageName);
@@ -173,6 +181,6 @@ function findProject($id)
     }
     $project->category = $request->category;
     $project->save();
-    return redirect('client/project');
+    return back();
 }
 }

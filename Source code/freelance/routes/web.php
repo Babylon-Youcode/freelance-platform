@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FreelancerController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\CompetanceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,8 @@ Route::group(['middleware'=>['AuthCheck']], function(){
     Route::get('/freelancer/dashboard',[FreelancerController::class, 'dashboard']);
     Route::get('/freelancer/settings',[FreelancerController::class,'settings']);
     Route::get('/freelancer/profile',[FreelancerController::class,'profile']);
+    Route::get('/freelancer/deleteCompetance/{id}',[FreelancerController::class,'deleteCompetance']);
+    Route::get('/freelancer/createCompetance/',[FreelancerController::class,'createCompetance']);
     Route::get('/freelancer/staff',[FreelancerController::class,'staff']);
     Route::post('/freelancer/update/{id}',[FreelancerController::class, 'update']);
 // client--------------

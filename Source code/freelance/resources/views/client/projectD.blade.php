@@ -5,7 +5,7 @@
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
     <div class="m-2">
         <div class="row">
-        <img src="/img/{!! $findProject->image !!}" style="height: 460px" class="col-6" alt="...">
+        <img src="/img/{!! $findProject->image !!}" style="height: 490px" class="col-6" alt="...">
   
           <form class="col" enctype="multipart/form-data" action="/client/editProject/{!! $findProject->id !!}" method="post">
                      
@@ -33,19 +33,41 @@
                   </select>
                 </div>
                 <div class="form-group">
+                    <label>Prix</label>
+                    <input type="number" class="form-control" name="prix" placeholder="00.0Dh" value="{!! $findProject->prix !!}" >
+                 </div>
+                <div class="form-group">
                    <label>Description</label>
                    <textarea class="form-control" name="description" cols="30" rows="5">{!! $findProject->description !!}</textarea>
                 </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-success">Update</button>
-                <a class="btn ml-5 btn-danger"  href="/client/deleteProject/{{ $findProject->id}}">Delete</a>
+               <div class="form-group">
+                <button type="submit" class="btn btn-success"><i class="fas fa-edit"></i>Update</button>
+                <a  data-toggle="modal" class="btn mt-1  btn-danger float-right  " data-target="#deletproject"  ><i class="fas fa-trash"></i> Delete</a> 
             </div>
             </form>   
         </div>
         </div>
         {{-- ------------------------ --}}
 
-
+    
+        <div class="modal fade" id="deletproject" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+             <div class="modal-content">
+                <div class="modal-header">
+                   <h3 class="modal-title" id="staticBackdropLabel">Are You Sure You Want To Delete This Project</h3>
+                   <button type="button" class="close btn btn-light" data-dismiss="modal" aria-label="Close">
+                   <i class="fas fa-times"></i>
+                   </button>
+                 </div>
+                 <div class="modal-body ">     
+          <a class="btn btn-outline-danger btn-block " href="/client/deleteProject/{{ $findProject->id}}">Yes</a>
+          <button type="button" class=" btn btn-outline-info btn-block" data-dismiss="modal" aria-label="Close">
+             No
+               </button>
+        </div> 
+       </div>     
+       </div>   
+    </div>   
  
 
     </main>

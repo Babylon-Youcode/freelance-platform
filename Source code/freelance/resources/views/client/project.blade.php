@@ -6,16 +6,16 @@
      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
          <h1 class="h2">Projects</h1>
-         <button type="submit" data-toggle="modal" class="btn mt-1  btn-success  "  data-target="#add-project"  >Add Project </button>    
+         <button type="submit" data-toggle="modal" class="btn mt-1  btn-success  "  data-target="#add-project"  ><i class="fas fa-plus-square"></i> Add Project </button>    
        </div>
        <div class="row">
        @foreach( $myProjects as $project)
        <div class="card col-3 m-2" style="height: 350px;">
         <img src="/img/{!! $project->image !!}" class="card-img-top" style="height: 200px; " alt="...">
         <div class="card-body">
-          <h5 class="card-title">{!! $project->name !!}</h5>
+          <h5 class="card-title">{!! $project->name !!}<strong class="float-right">{!! $project->prix !!}/Dh</strong></h5>
           <p class="card-text">{!! $project->description !!}</p>
-          <small >{!! $project->created_at !!}</small>
+          <small >{!! $project->created_at !!} </small>
           <a class="btn ml-5 btn-success"  href="/client/projectD/{{$project->id}}">Details</a>
         </div>
       </div>
@@ -56,6 +56,10 @@
                   <option value="Other ">Other </option>
                 </select>
               </div>
+              <div class="form-group">
+                <label>Prix</label>
+                <input type="number" class="form-control" name="prix" placeholder="00.0Dh" >
+             </div>
                 <div class="form-group">
                    <label>Description</label>
                    <textarea class="form-control" name="description" id="" cols="30" rows="5"></textarea>

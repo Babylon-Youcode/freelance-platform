@@ -18,6 +18,7 @@ class CreateProjectsTable extends Migration
             $table->string('name');
             $table->string('description');
             $table->string('category');
+            $table->integer('prix')->default(00.0);
             $table->string('image')->default('project.jpg');
             $table->bigInteger('client_id')->unsigned()->index()->nullable();
             $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');

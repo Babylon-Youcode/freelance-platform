@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\project;
 use App\Models\client;
 use App\Models\freelancer;
+use App\Models\competance;
 use Illuminate\Http\Request;
 
 class FreelancerController extends Controller
@@ -110,9 +111,25 @@ class FreelancerController extends Controller
     }
 
     function profile(){
-        $data = ['LoggedUserInfo'=>freelancer::where('id','=', session('LoggedUser'))->first()];
+        $data = ['LoggedUserInfo'=>freelancer::where('id','=', session('LoggedUser'))->first(),'CompetanceArr'=>competance::all()];
         return view('freelancer.profile', $data);
     }
+
+    // competance---------------------------
+    public function deleteCompetance($id){
+        competance::destroy(array('id',$id));
+        return back();
+    }
+
+    public function createCompetance(Request $req){  
+        $competance = new competance;
+        $competance->name = $req->input('name');
+        $competance->freelancer_id = session()->get('LoggedUser');
+        $competance->save();
+        return back();
+    }
+    // end of competance---------------------------
+
     function staff(){
         $data = ['LoggedUserInfo'=>freelancer::where('id','=', session('LoggedUser'))->first()];
         return view('freelancer.staff', $data);
