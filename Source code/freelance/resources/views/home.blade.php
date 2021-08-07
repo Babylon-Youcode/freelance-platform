@@ -7,7 +7,11 @@
       </div>
     </div>
   </nav>
-
+  @if(Session::get('success'))
+  <div class="alert text-center alert-success">
+     {{ Session::get('success') }}
+  </div>
+@endif
 <header class="py-5">
     <div class="container-fluid px-5">
         <div class="row gx-5 align-items-center justify-content-center">
@@ -112,7 +116,7 @@
                     <h2 class="fw-bolder text-success">Get in touch</h2>
                     <p class="lead mb-0 text-muted">We'd love to hear from you</p>
                 </div>
-                <form action="" method="POST">
+                <form action="/contact"  method="POST">
                     @csrf
                     <div class="form-group mb-3">
                         <input type="text" placeholder="Name" id="name" class="form-control" name="name"
@@ -126,8 +130,8 @@
                         
                     </div>
                     <div class="form-group mb-3">
-                        <input type="text" placeholder="Phone Number"  class="form-control"
-                            name="Number" required >
+                        <input type="number" placeholder="Phone Number"  class="form-control"
+                            name="phone" required >
                         
                     </div>
 

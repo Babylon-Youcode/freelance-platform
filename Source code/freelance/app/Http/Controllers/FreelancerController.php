@@ -100,8 +100,13 @@ class FreelancerController extends Controller
 
     function dashboard(){
 
-        $data = ['LoggedUserInfo'=>freelancer::where('id','=', session('LoggedUser'))->first()
-    ,'projectArr'=>project::all(),'freelancerArr'=>freelancer::all(),'clientArr'=>client::all()];
+    $data = ['LoggedUserInfo'=>freelancer::where('id','=', session('LoggedUser'))->first()
+    ,'projectArr'=>project::all(),
+    'freelancerArr'=>freelancer::all(),
+    'clientArr'=>client::all(),
+    'countfreelancers'=>freelancer::count(),
+    'countprojects'=>project::count(),
+    'countclients'=>client::count()];
         return view('freelancer.dashboard', $data);
     }
 

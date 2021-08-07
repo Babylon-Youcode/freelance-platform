@@ -101,7 +101,10 @@ class ClientController extends Controller
         $data = ['LoggedUserInfo'=>client::where('id','=', session('LoggedUser'))->first(),
         'projectArr'=>project::all(),
         'freelancerArr'=>freelancer::all(),
-        'competanceArr'=>competance::all()];
+        'competanceArr'=>competance::all(),
+        'countfreelancers'=>freelancer::count(),
+        'countprojects'=>project::count(),
+        'countclients'=>client::count()];
         return view('client.dashboard', $data);
     }
 

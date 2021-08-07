@@ -7,6 +7,12 @@
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Dashboard</h1>   
   </div>
+  <div class="row text-center ">
+    <h1 class="col alert alert-primary py-4 m-2"><strong class="text-primary ">+{{ $countfreelancers }}</strong> Freelancers</h1>
+    <h1 class="col alert alert-danger py-4 m-2"><strong class="text-danger ">+{{ $countclients }}</strong> Clients</h1>
+    <h1 class="col alert alert-success py-4 m-2"><strong class="text-success ">+{{ $countprojects }}</strong> Projects</h1>
+</div>
+<hr>
   <h3>Clients</h3>
   <hr>
   <div class="row w-100">

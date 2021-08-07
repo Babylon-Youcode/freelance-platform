@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FreelancerController;
 use App\Http\Controllers\ClientController;
-use App\Http\Controllers\CompetanceController;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +20,7 @@ Route::get('/', function () {
     return view('home');
 });
 
-
+Route::post('/contact',[ContactController::class, 'contact']);
 Route::post('/freelancer/save',[FreelancerController::class, 'save'])->name('freelancer.save');
 Route::post('/freelancer/check',[FreelancerController::class, 'check'])->name('freelancer.check');
 Route::get('/freelancer/logout',[FreelancerController::class, 'logout'])->name('freelancer.logout');
