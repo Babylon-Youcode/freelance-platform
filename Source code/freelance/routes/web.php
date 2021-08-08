@@ -43,7 +43,8 @@ Route::group(['middleware'=>['AuthCheck']], function(){
     Route::get('/freelancer/createCompetance/',[FreelancerController::class,'createCompetance']);
     Route::get('/freelancer/staff',[FreelancerController::class,'staff']);
     Route::post('/freelancer/update/{id}',[FreelancerController::class, 'update']);
-// client--------------
+
+    // client--------------
     Route::get('/client/login',[ClientController::class, 'login'])->name('client.login');
     Route::get('/client/register',[ClientController::class, 'register'])->name('client.register');
 
@@ -56,6 +57,6 @@ Route::group(['middleware'=>['AuthCheck']], function(){
     Route::get('/client/deleteProject/{id}',[ClientController::class, 'deleteProject']);
     Route::get('/client/projectD/{id}',[ClientController::class, 'findProject']);
     Route::post('/client/editProject/{id}',[ClientController::class, 'editProject']);
-    // Route::post('/client/category/{category}',[ClientController::class, 'category']);
+    Route::get('/client/choose/{id}',[ClientController::class, 'choose']);
 
 });

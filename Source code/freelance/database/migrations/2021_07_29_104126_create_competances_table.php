@@ -16,8 +16,7 @@ class CreateCompetancesTable extends Migration
         Schema::create('competances', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->bigInteger('freelancer_id')->unsigned()->index()->nullable();
-            $table->foreign('freelancer_id')->references('id')->on('freelancers')->onDelete('cascade');
+            $table->bigInteger('freelancer_id')->index()->nullable();
             $table->timestamps();
         });
     }

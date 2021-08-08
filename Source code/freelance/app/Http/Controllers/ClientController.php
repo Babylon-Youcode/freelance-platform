@@ -160,6 +160,17 @@ function deleteProject($id){
     return redirect('client/project');
 }
 
+function choose($id){
+    $project = new project;
+    $project->freelanser_id = $id;
+    $save = $project->save();
+    if($save){
+        return redirect('client/project');
+     }else{
+         return back()->with('fail','Something went wrong, try again later');
+     }
+  
+}
 function findProject($id)
 {
     $data = ['LoggedUserInfo'=>client::where('id','=', session('LoggedUser'))->first() ,'findProject'=>project::find($id) ];

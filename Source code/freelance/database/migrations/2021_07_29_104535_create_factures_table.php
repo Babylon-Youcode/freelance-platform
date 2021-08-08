@@ -15,9 +15,10 @@ class CreateFacturesTable extends Migration
     {
         Schema::create('factures', function (Blueprint $table) {
             $table->id();
-            $table->string('description');
-            $table->bigInteger('client_id')->unsigned()->index()->nullable();
-            $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
+            $table->string('prix');
+            $table->bigInteger('client_id')->index()->nullable();
+            $table->bigInteger('freelanser_id')->index()->nullable();
+            $table->bigInteger('project_id')->index()->nullable();
             $table->timestamps();
         });
     }

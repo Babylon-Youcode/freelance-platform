@@ -3,10 +3,12 @@
 @section('sidebar')
 
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-    <div class="m-2">
+   <div class="d-flex justify-content-end flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <div id="paypal-button-container"></div>   
+    </div>
+    <div class="m-2 ">
         <div class="row">
         <img src="/img/{!! $findProject->image !!}" style="height: 490px" class="col-6" alt="...">
-  
           <form class="col" enctype="multipart/form-data" action="/client/editProject/{!! $findProject->id !!}" method="post">
                      
           
@@ -46,7 +48,37 @@
             </div>
             </form>   
         </div>
-        </div>
+      </div>
+        {{-- payment -------------------------------------}}
+    <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD&disable-funding=credit,card"></script>
+    {{-- &disable-funding=credit,card --}}
+    <script>
+        // Render the PayPal button into #paypal-button-container
+        paypal.Buttons({
+            // Set up the transaction
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: '{!! $findProject->prix !!}'
+                        }
+                    }]
+                });
+            },
+            // Finalize the transaction
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(orderData) {
+                    // Successful capture! For demo purposes:
+                    console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+                    var transaction = orderData.purchase_units[0].payments.captures[0];
+                    alert('Transaction '+ transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
+
+                });
+            }
+        }).render('#paypal-button-container');
+    </script>
+       
+         
         {{-- ------------------------ --}}
 
     
@@ -68,12 +100,7 @@
        </div>     
        </div>   
     </div>   
- 
-
     </main>
-            </div>
-            
-
-
-    </div>
+ </div>
+</div>
 @endsection

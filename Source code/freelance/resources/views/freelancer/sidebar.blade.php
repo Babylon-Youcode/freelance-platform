@@ -47,9 +47,8 @@
           <a type="submit" data-toggle="modal" class="nav-link text-danger"  data-target="#logout"  ><i class="fas fa-sign-out-alt"></i>
             Logout</a>
           </li>
-   
-    
-         </ul>  
+         </ul> 
+         <div style="height: 430px"></div>  
       </div>
       <div class="modal fade" id="logout" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">

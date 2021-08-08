@@ -8,7 +8,7 @@
          <h1 class="h2">Projects</h1>
          <button type="submit" data-toggle="modal" class="btn mt-1  btn-success  "  data-target="#add-project"  ><i class="fas fa-plus-square"></i> Add Project </button>    
        </div>
-       <div class="row">
+       <div class="row ">
        @foreach( $myProjects as $project)
        <div class="card col-3 m-2" style="height: 350px;">
         <img src="/img/{!! $project->image !!}" class="card-img-top" style="height: 200px; " alt="...">

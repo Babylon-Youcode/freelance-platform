@@ -17,6 +17,7 @@
       <hr>
       <div class="row w-100">
         @foreach( $freelancerArr as $freelancer)
+        {{-- <a class="card col-lg-2 col-sm-3  m-2" href="/client/choose/{!! $freelancer->id !!}"> --}}
         <div class="card col-lg-2 col-sm-3  m-2"  >
          <img src="/img/{!! $freelancer->image !!}"style="height: 150px;" class="rounded-circle"  alt="...">
          <div class="my-2">
@@ -30,6 +31,7 @@
            <p class="card-text text-muted">{!! $freelancer->experience !!}</p>
          </div>
        </div>
+      {{-- </a> --}}
        @endforeach
      </div>
       <h3>Projects</h3>
