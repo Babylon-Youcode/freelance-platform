@@ -7,7 +7,22 @@
          <h1 class="h2">Projects</h1>
          
        </div>
- 
+      
+        @foreach( $myProjects as $project)
+        @if( $project->freelanser_id == $LoggedUserInfo->id)
+        <div class="row ">
+         <img src="/img/{!! $project->image !!}" class="col-6" style="height: 250px; " alt="...">
+         <div class="col-6">
+           <h2 class="card-title">{!! $project->name !!}<strong class="float-right">{!! $project->prix !!}/Dh</strong></h2>
+           <h3 class="card-text">{!! $project->description !!}</h3>
+           <h4 >{!! $project->created_at !!} </h4>
+
+         </div>
+        </div>
+        <hr>
+     @endif
+       @endforeach
+    
        
  
      </main>

@@ -37,6 +37,16 @@
        <p class="card-title ">{!! $project->name !!}<strong class="float-right">{!! $project->prix !!}/Dh</strong></p>
        <p class="card-text text-muted">{!! $project->description !!}</p>
        <small >{!! $project->created_at !!}</small>
+       
+       <form enctype="multipart/form-data" action="/postuler" method="POST">
+        @csrf
+        <input type="hidden" name="project_id" value='{{$project->id}}'>
+        <input type="hidden" name="project_name" value='{{$project->name}}'>
+        <input type="hidden" name="client_id" value='{{$project->client_id}}'>
+        <input type="hidden" name="freelancer_id" value='{{$LoggedUserInfo->id}}'>
+        <input type="hidden" name="freelancer_name" value='{{$LoggedUserInfo->name}}'>
+        <button type="submit" class="btn btn-success">  Postuler</button>
+        </form> 
      </div>
    </div>
    @endforeach

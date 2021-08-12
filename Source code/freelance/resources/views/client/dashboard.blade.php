@@ -1,6 +1,56 @@
 @extends('client.sidebar')
 
 @section('sidebar')
+<style>
+  .slider{
+    max-width: 100%;
+    position: relative;
+    margin: auto;
+    height: 300px;
+}
+/* Картинка масштабируется по отношению к родительскому элементу */
+.slider .item img {
+    object-fit: cover;
+    width: 100%;
+    height: 300px;
+}
+/* Кнопки вперед и назад */
+.slider .previous, .slider .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: rgb(8, 8, 8);
+    font-weight: bold;
+    font-size: 16px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+}
+.slider .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+/* При наведении на кнопки добавляем фон кнопок */
+.slider .previous:hover,
+.slider .next:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+/* Анимация слайдов */
+.slider .item {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+@keyframes fade {
+    from {
+        opacity: 0.5
+    }
+    to {
+        opacity: 1
+    }
+}
+</style>
 
  
      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
@@ -36,22 +86,62 @@
      </div>
       <h3>Projects</h3>
       <hr>
-      <div class="row">
-        @foreach( $projectArr as $project)
-        <div class="card col-lg-2 col-sm-3 m-2 "  >
-       
-         <img  src="/img/{!! $project->image !!}"style="height: 150px; "  alt="...">
       
+         <div class="slider row"> 
+        @foreach( $projectArr as $project)
+        <div class="card col-lg-2 col-sm-3 m-2 item "  >    
+         <img  src="/img/{!! $project->image !!}"style="height: 150px; "  alt="..."> 
          <div class="my-2">
            <p class="card-title ">{!! $project->name !!}<strong class="float-right">{!! $project->prix !!}/Dh</strong></p>
            <p class="card-text text-muted">{!! $project->description !!}</p>
-           <small >{!! $project->created_at !!}</small>
-         
+           <small >{!! $project->created_at !!}</small>  
          </div>
        </div>
        @endforeach
+       <a class="previous" onclick="previousSlide()">&#10094;</a>
+       <a class="next" onclick="nextSlide()">&#10095;</a>
      </div>
      </main>
    </div>
  </div>
+ 
+ <script>
+  let slideIndex = 1;
+showSlides(slideIndex);
+
+
+/* Увеличиваем индекс на 1 — показываем следующий слайд*/
+function nextSlide() {
+    showSlides(slideIndex += 1);
+}
+
+/* Уменьшает индекс на 1 — показываем предыдущий слайд*/
+function previousSlide() {
+    showSlides(slideIndex -= 1);  
+}
+
+/* Устанавливаем текущий слайд */
+function currentSlide(n) {
+    showSlides(slideIndex = n);
+}
+
+/* Функция перелистывания */
+function showSlides(n) {
+    let i;
+    let slides = document.getElementsByClassName("item");
+    
+    if (n > slides.length) {
+      slideIndex = 1
+    }
+    if (n < 1) {
+        slideIndex = slides.length
+    }
+  
+  /* Проходим по каждому слайду в цикле for */
+    for (let slide of slides) {
+        slide.style.display = "none";
+    }   
+    slides[slideIndex - 1].style.display = "block"; 
+}
+ </script>
     @endsection

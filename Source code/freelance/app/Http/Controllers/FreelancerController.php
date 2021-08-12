@@ -136,7 +136,8 @@ class FreelancerController extends Controller
     // end of competance---------------------------
 
     function staff(){
-        $data = ['LoggedUserInfo'=>freelancer::where('id','=', session('LoggedUser'))->first()];
+        $data = ['LoggedUserInfo'=>freelancer::where('id','=', session('LoggedUser'))->first()
+        ,'myProjects'=>project::all()];
         return view('freelancer.staff', $data);
     }
     

@@ -41,6 +41,12 @@
               Category
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/client/showPostuler">
+              <i class="fas fa-layer-group"></i>
+              Postulers
+            </a>
+          </li>
       
         
           <li class="nav-item">

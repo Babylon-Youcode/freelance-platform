@@ -24,7 +24,7 @@
 
      <div class="row">
         <div class="col-6">
-           <h2 class="m-3 ">Competance</h2>
+           <h2 class="m-3 ">Skills</h2>
         
          @foreach($CompetanceArr as $Competance)
           @if( $Competance->freelancer_id == $LoggedUserInfo->id)

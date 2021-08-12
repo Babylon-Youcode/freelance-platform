@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Hash;
 use Session;
 // use Illuminate\Support\Facades\Auth;
+use App\Models\facture;
 use App\Models\project;
 use App\Models\client;
 use App\Models\freelancer;
@@ -173,7 +174,9 @@ function choose($id){
 }
 function findProject($id)
 {
-    $data = ['LoggedUserInfo'=>client::where('id','=', session('LoggedUser'))->first() ,'findProject'=>project::find($id) ];
+    $data = ['LoggedUserInfo'=>client::where('id','=', session('LoggedUser'))->first() ,
+    'findProject'=>project::find($id),
+    'findfacture'=>facture::all()];
     return view('client/projectD', $data);
 }
  function editProject(Request  $request, $id){
@@ -197,4 +200,23 @@ function findProject($id)
     $project->save();
     return back();
 }
+public function facture(Request $request)
+    {
+        $facture = new facture;
+        $facture->project_id = $request->project_id;
+        $facture->client_id = $request->client_id;
+        $facture->freelanser_id  = $request->freelancer_id;
+        $facture->prix = $request->prix;
+       
+        $save = $facture->save();
+        
+        if($save){
+            return back()->with('success','You have successfuly facture ');
+         }else{
+             return back()->with('success','Something went wrong, try again later');
+         }
+    }
+
+
+
 }

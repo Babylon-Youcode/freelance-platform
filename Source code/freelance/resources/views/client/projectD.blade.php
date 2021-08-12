@@ -49,6 +49,47 @@
             </form>   
         </div>
       </div>
+     @isset($findProject->freelanser_id)
+     <form enctype="multipart/form-data"  action="/client/factures" method="POST">
+        @csrf
+        <input type="hidden" name="project_id" value='{{$findProject->id}}'>
+        <input type="hidden" name="prix" value='{{$findProject->prix}}'>
+        <input type="hidden" name="client_id" value='{{$findProject->client_id}}'>
+        <input type="hidden" name="freelancer_id" value='{{$findProject->freelanser_id}}'>
+        <button type="submit" class="btn m-5 btn-info">Factures</button>
+        </form>
+         
+     @endisset
+     <table class="table">
+        <tr>
+            
+        
+            <td>Project_id</td>
+            <td>Feelancer_id</td>
+            <td>Client_id</td>
+            <td>Prix</td>
+            <td>Date</td>
+            <td></td>
+            
+            
+        </tr>
+        @foreach($findfacture as $facture)
+        @if ( $facture->client_id == $LoggedUserInfo->id)
+        <tr>
+       
+            <td>{{$facture->project_id}}</td>  
+            <td>{{$facture->client_id}}</td>
+            <td>{{$facture->freelanser_id}}</td>
+            <td>{{$facture->prix}}</td>
+            <td>{{$facture->created_at}}</td>
+
+        </tr>
+
+          @endif
+        @endforeach
+</table>
+      
+
         {{-- payment -------------------------------------}}
     <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD&disable-funding=credit,card"></script>
     {{-- &disable-funding=credit,card --}}

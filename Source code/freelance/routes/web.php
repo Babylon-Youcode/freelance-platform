@@ -44,6 +44,11 @@ Route::group(['middleware'=>['AuthCheck']], function(){
     Route::get('/freelancer/staff',[FreelancerController::class,'staff']);
     Route::post('/freelancer/update/{id}',[FreelancerController::class, 'update']);
 
+    Route::post('/postuler',  [App\Http\Controllers\PostulerController::class, 'postuler'] );
+    Route::get('/client/showPostuler',  [App\Http\Controllers\PostulerController::class, 'show'] );
+    Route::get('/deletePostuler/{id}',  [App\Http\Controllers\PostulerController::class, 'deletePostuler'] );
+    Route::get('/acceptPostuler/{id}/{freelancer_id}',  [App\Http\Controllers\PostulerController::class, 'acceptPostuler'] );
+
     // client--------------
     Route::get('/client/login',[ClientController::class, 'login'])->name('client.login');
     Route::get('/client/register',[ClientController::class, 'register'])->name('client.register');
@@ -58,5 +63,6 @@ Route::group(['middleware'=>['AuthCheck']], function(){
     Route::get('/client/projectD/{id}',[ClientController::class, 'findProject']);
     Route::post('/client/editProject/{id}',[ClientController::class, 'editProject']);
     Route::get('/client/choose/{id}',[ClientController::class, 'choose']);
+    Route::post('/client/factures',[ClientController::class, 'facture']);
 
 });
