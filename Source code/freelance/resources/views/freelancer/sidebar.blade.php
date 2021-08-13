@@ -14,7 +14,7 @@
  
  <div class="container-fluid">
    <div class="row">
-     <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+     <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block d-inline bg-light sidebar collapse">
 
        <div class="position-sticky pt-3">
          <ul class="nav flex-column">
@@ -48,7 +48,7 @@
             Logout</a>
           </li>
          </ul> 
-         <div style="height: 430px"></div>  
+     
       </div>
       <div class="modal fade" id="logout" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">

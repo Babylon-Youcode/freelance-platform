@@ -8,10 +8,8 @@
     </div>
     <div class="m-2 ">
         <div class="row">
-        <img src="/img/{!! $findProject->image !!}" style="height: 490px" class="col-6" alt="...">
-          <form class="col" enctype="multipart/form-data" action="/client/editProject/{!! $findProject->id !!}" method="post">
-                     
-          
+        <img src="/img/{!! $findProject->image !!}" style="height: 490px" class="col-md-6" alt="...">
+          <form class="col-md-6" enctype="multipart/form-data" action="/client/editProject/{!! $findProject->id !!}" method="post">
              @csrf
              <div class="form-group">
       

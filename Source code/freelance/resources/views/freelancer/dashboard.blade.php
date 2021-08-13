@@ -29,10 +29,10 @@
  </div>
   <h3>Projects</h3>
   <hr>
-  <div class="row w-100">
+  <div class="row slider w-100" >
     @foreach( $projectArr as $project)
     <div class="card col-lg-2 col-sm-3  m-2"  >
-     <img src="/img/{!! $project->image !!}"style="height: 150px; "  alt="...">
+     <img class="w-100" src="/img/{!! $project->image !!}"style="height: 150px; "  alt="...">
      <div class="my-2">
        <p class="card-title ">{!! $project->name !!}<strong class="float-right">{!! $project->prix !!}/Dh</strong></p>
        <p class="card-text text-muted">{!! $project->description !!}</p>
@@ -51,6 +51,7 @@
    </div>
    @endforeach
  </div>
+ <hr>
  </main>
 </div>
 </div>

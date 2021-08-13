@@ -1,7 +1,7 @@
 @extends('client.sidebar')
 
 @section('sidebar')
-<style>
+{{-- <style>
   .slider{
     max-width: 100%;
     position: relative;
@@ -50,9 +50,9 @@
         opacity: 1
     }
 }
-</style>
+</style> --}}
 
- 
+
      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Dashboard</h1>   
@@ -65,7 +65,7 @@
     <hr>
       <h3>Freelancers</h3>
       <hr>
-      <div class="row w-100">
+      <div class="row  w-100">
         @foreach( $freelancerArr as $freelancer)
         {{-- <a class="card col-lg-2 col-sm-3  m-2" href="/client/choose/{!! $freelancer->id !!}"> --}}
         <div class="card col-lg-2 col-sm-3  m-2"  >
@@ -90,7 +90,7 @@
          <div class="slider row"> 
         @foreach( $projectArr as $project)
         <div class="card col-lg-2 col-sm-3 m-2 item "  >    
-         <img  src="/img/{!! $project->image !!}"style="height: 150px; "  alt="..."> 
+         <img class="w-100" src="/img/{!! $project->image !!}"style="height: 150px; "  alt="..."> 
          <div class="my-2">
            <p class="card-title ">{!! $project->name !!}<strong class="float-right">{!! $project->prix !!}/Dh</strong></p>
            <p class="card-text text-muted">{!! $project->description !!}</p>
@@ -98,50 +98,10 @@
          </div>
        </div>
        @endforeach
-       <a class="previous" onclick="previousSlide()">&#10094;</a>
-       <a class="next" onclick="nextSlide()">&#10095;</a>
      </div>
+     <hr>
      </main>
    </div>
  </div>
- 
- <script>
-  let slideIndex = 1;
-showSlides(slideIndex);
 
-
-/* Увеличиваем индекс на 1 — показываем следующий слайд*/
-function nextSlide() {
-    showSlides(slideIndex += 1);
-}
-
-/* Уменьшает индекс на 1 — показываем предыдущий слайд*/
-function previousSlide() {
-    showSlides(slideIndex -= 1);  
-}
-
-/* Устанавливаем текущий слайд */
-function currentSlide(n) {
-    showSlides(slideIndex = n);
-}
-
-/* Функция перелистывания */
-function showSlides(n) {
-    let i;
-    let slides = document.getElementsByClassName("item");
-    
-    if (n > slides.length) {
-      slideIndex = 1
-    }
-    if (n < 1) {
-        slideIndex = slides.length
-    }
-  
-  /* Проходим по каждому слайду в цикле for */
-    for (let slide of slides) {
-        slide.style.display = "none";
-    }   
-    slides[slideIndex - 1].style.display = "block"; 
-}
- </script>
     @endsection
